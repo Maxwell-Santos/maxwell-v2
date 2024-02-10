@@ -3,31 +3,57 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --main-font-color: #2A2A2A;
+  --bg-color: #FFFFFF;
+  --hint: #3D5F60;
+  --date-color : #7E7E7E;
 }
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-  }
-}
+  } 
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--main-font-color);
+  background: var(--bg-color);
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  
+  label {
+    @apply transition-all duration-500;
   }
+  
+  .section h3 {
+    @apply text-[var(--hint)] font-semibold text-2xl mb-3
+  }
+
+  .section div {
+    @apply flex-1
+  }
+  .section div span {
+    @apply block
+  }
+
+  .section div span:nth-child(2) {
+    @apply font-medium 
+  }
+
+  .section .date {
+    @apply text-sm text-[var(--date-color)]
+  }
+
+  .contacts {
+    @apply flex space-x-5
+  }
+
+ .contacts .contact-item a {
+  @apply w-20 h-20 rounded-md hover:bg-zinc-100 transition-colors flex justify-center flex-col items-center space-y-2 text-sm
+ }
+
 }
